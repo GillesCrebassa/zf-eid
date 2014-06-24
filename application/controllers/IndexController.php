@@ -13,6 +13,7 @@ class IndexController extends Zend_Controller_Action
         }
 
         if (!$auth->hasIdentity()) {
+            // https://www.e-contract.be/eid-idp/endpoints/openid/ident/xrds (see https://www.e-contract.be/eid-idp/main)
             $adapter = new Zend_Auth_Adapter_OpenId('https://www.e-contract.be/eid-idp/endpoints/openid-identity/xrds');
             return $auth->authenticate($adapter);
         }
